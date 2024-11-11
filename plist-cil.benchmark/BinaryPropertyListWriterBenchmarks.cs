@@ -3,7 +3,7 @@ using BenchmarkDotNet.Jobs;
 
 namespace Claunia.PropertyList.Benchmark
 {
-    [SimpleJob(RuntimeMoniker.NetCoreApp50), MemoryDiagnoser]
+    [SimpleJob(RuntimeMoniker.Net90), MemoryDiagnoser]
     public class BinaryPropertyListWriterBenchmarks
     {
         NSObject data;

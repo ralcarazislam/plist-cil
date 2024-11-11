@@ -470,7 +470,7 @@ namespace plistcil.test
             },
             new object[]
             {
-                double.MaxValue, true, long.MinValue /* Overflow! */, double.MaxValue
+                double.MaxValue, true, long.MaxValue /* Overflow! */, double.MaxValue
             },
             new object[]
             {

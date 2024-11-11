@@ -4,18 +4,18 @@ using BenchmarkDotNet.Jobs;
 
 namespace Claunia.PropertyList.Benchmark
 {
-    [SimpleJob(RuntimeMoniker.NetCoreApp50), MemoryDiagnoser]
+    [SimpleJob(RuntimeMoniker.Net90), MemoryDiagnoser]
     public class BinaryPropertyListParserBenchmarks
     {
-        byte[] data;
+        private byte[] _data = [];
 
         [GlobalSetup]
-        public void Setup() => data = File.ReadAllBytes("plist.bin");
+        public void Setup() => _data = File.ReadAllBytes("plist.bin");
 
         [Benchmark]
-        public NSObject ReadLargePropertylistTest()
+        public NSObject ReadLargePropertyListTest()
         {
-            NSObject nsObject = PropertyListParser.Parse(data);
+            NSObject nsObject = PropertyListParser.Parse(_data);
 
             return nsObject;
         }

@@ -297,11 +297,11 @@ namespace plistcil.test
             Assert.True(d.Count == 5);
             Assert.Equal("valueA", ((NSString)d.ObjectForKey("keyA")).ToString());
             Assert.Equal("value&B", ((NSString)d.ObjectForKey("key&B")).ToString());
+            DateTimeOffset expectedDate = DateTimeOffset.FromUnixTimeSeconds(1322472090);
+            DateTimeOffset date         = new(((NSDate)d.ObjectForKey("date")).Date.ToUniversalTime());
 
-            Assert.True(((NSDate)d.ObjectForKey("date")).Date.Equals(new DateTime(2011, 11, 28, 10, 21, 30,
-                                                                         DateTimeKind.Utc)) ||
-                        ((NSDate)d.ObjectForKey("date")).Date.Equals(new DateTime(2011, 11, 28, 9, 21, 30,
-                                                                         DateTimeKind.Utc)));
+            Assert.Equal(expectedDate, date);
+
 
             Assert.True(ArrayEquals(((NSData)d.ObjectForKey("data")).Bytes, new byte[]
             {
